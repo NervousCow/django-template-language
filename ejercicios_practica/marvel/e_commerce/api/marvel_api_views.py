@@ -15,8 +15,8 @@ from marvel.settings import VERDE, CIAN, AMARILLO
 
 # NOTE: Declaramos las variables que tienen que ver con la API KEY de Marvel:
 
-PUBLIC_KEY = '58ee40376f7c10e99f440f5e3abd2caa'
-PRIVATE_KEY = '2c0373e00d85edb4560f68ddc2094014e8694f90'
+PUBLIC_KEY = 'a9231193f0ec2497d958b844be97f792'
+PRIVATE_KEY = '8a36e5a14dab62b956f5d64692baaae2cdeb14b7'
 TS = 1
 TO_HASH = str(TS)+PRIVATE_KEY+PUBLIC_KEY
 HASHED = hashlib.md5(TO_HASH.encode())

@@ -1,7 +1,8 @@
 from django.db.models import Subquery
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
+from django.urls import reverse_lazy
 
 # (GET - ListAPIView) Listar todos los elementos en la entidad:
 # (POST - CreateAPIView) Inserta elementos en la DB
@@ -26,7 +27,7 @@ from rest_framework.authentication import (
     BasicAuthentication, TokenAuthentication
 )
 from rest_framework.authtoken.models import Token
-from rest_framework.parsers import JSONParser
+from rest_framework.parsers import JSONParser, FormParser
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.renderers import JSONRenderer
 from rest_framework.response import Response
@@ -90,6 +91,19 @@ class PostComicAPIView(CreateAPIView):
     serializer_class = ComicSerializer
     permission_classes = (IsAuthenticated & IsAdminUser,)
 
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+
+        return redirect('/e-commerce/compra_exitosa')
+    
+# Si bien mi modificación usando "redirect" funciona valdria la pena investigar si 
+# usando un try / exept y usando un condicional para capturar el status 201 en el
+# Response y luego redirigir al la url de compra_exitosa...
+# Vale aclarar que conceptualmente una API no debería mandar hacer ningún redirect o
+# mostrar una pagina. Lo que have es transar con la base de datos a través de los
+# los metodos GET POST PATCH PUT DELETE....
 
 class ListCreateComicAPIView(ListCreateAPIView):
     __doc__ = f'''{mensaje_headder}
@@ -261,7 +275,7 @@ class LoginUserAPIView(APIView):
     }
     ```
     '''
-    parser_classes = (JSONParser,)
+    parser_classes = (JSONParser, FormParser)
     # renderer_classes = [JSONRenderer]
     authentication_classes = ()
     permission_classes = ()

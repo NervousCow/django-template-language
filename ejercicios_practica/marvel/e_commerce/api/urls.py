@@ -6,7 +6,7 @@ from e_commerce.api.api_views import *
 
 urlpatterns = [
     # User APIs:
-    path('user/login/', LoginUserAPIView.as_view()),
+    path('user/login/', LoginUserAPIView.as_view(), name='login'),
 
     # APIs de Marvel
     path('get-comics/',get_comics),
@@ -19,7 +19,7 @@ urlpatterns = [
         'comics/marvel/<int:marvel_id>/get',
         GetOneMarvelComicAPIView.as_view()
     ),
-    path('comics/post', PostComicAPIView.as_view()),
+    path('comics/post', PostComicAPIView.as_view(), name='post-a-comic'),
     path('comics/get-post', ListCreateComicAPIView.as_view()),
     path('comics/<int:pk>/get-update', RetrieveUpdateComicAPIView.as_view()),
     path('comics/<int:marvel_id>/update', UpdateComicAPIView.as_view()),
