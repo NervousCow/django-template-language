@@ -1,0 +1,23 @@
+{% extends "e-commerce/base_tp.html" %}
+
+{% block title %}Formulario{% endblock %}
+
+{% block contenido %}
+{% load static %}
+<h2>Un formularios de tipo POST</h2>
+<form action="{% url 'post-a-comic' %}" method="POST">
+    {%csrf_token%}
+    <label for="marvel_id">Marvel ID:</label><br>
+    <input type="number" id="marvel_id" name="marvel_id"><br>
+    <label for="title">Titulo</label><br>
+    <input type="text" id="title" name="title"><br>
+    <label for="picture">URL</label><br>
+    <input type="url" id="picture" name="picture"><br><br>
+    <input type="submit" value="Agregar">
+</form>
+
+<h3>Ya agregaste un comic?! Ahora conocé una bodega!</h3>
+<a href="https://www.burbujasdealtura.com.ar/">
+  <img class="image" src="{% static 'e-commerce/img/vino_tinto.png' %}" alt="logo" height="20%" width="20%">
+</a>
+{% endblock %}

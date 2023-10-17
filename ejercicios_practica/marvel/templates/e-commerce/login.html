@@ -1,0 +1,18 @@
+{% extends "e-commerce/base_tp.html" %}
+
+{% block title %}Formulario Login{% endblock %}
+
+{% block contenido %}
+{% load static %}
+<h2>LOGIN</h2>
+<form action="{% url 'login' %}" method="POST">
+    {%csrf_token%}
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username"><br>
+    <label for="password">Password</label><br>
+    <input type="password" id="password" name="password"><br>
+    <input type="submit" value="Ingresar">
+</form>
+
+<a href="{% url 'base' %}">VOLVER AL INICIO</a><br>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "e-commerce/base_tp.html" %}
+
+{% block title %}Usuario{% endblock %}
+
+{% block contenido %}
+
+<h3>Datos de usuario</h3>
+
+<h2>Usuario: {{user.username}}</h2><br>
+<h2>Nombre: {{user.first_name}}</h2><br>
+<h2>Apellido: {{user.last_name}}</h2><br>
+<h2>e-Mail: {{user.email}}</h2><br><br>
+
+<a href="{% url 'base' %}">VOLVER AL INICIO</a><br>
+{% endblock %}

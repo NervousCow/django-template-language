@@ -1,0 +1,33 @@
+{% extends "e-commerce/base_tp.html" %}
+
+{% block title %}Carrito de compras{% endblock %}
+
+{% block contenido %}
+
+<h3>Hola {{user.username}}, este es el contenido de tu carrito de compras:</h3>
+<table>
+
+  {% for comic in comics_carrito %}
+  <tr class="comic-item">
+      <td>
+          <a href="/e-commerce/detail?marvel_id={{comic.marvel_id}}">
+              <img src="{{comic.picture}}" alt="\°/">
+          </a>
+      </td>
+      <td>
+          <ul>
+              <li>
+                  <h2>{{comic.title}}</h2>
+              </li>
+              <li>
+                  <h2>Precio unitario: U$S {{comic.price}}</h2>
+              </li>
+          </ul>
+      </td>
+  </tr>
+  {% endfor %}
+
+</table>
+
+<a href="{% url 'base' %}">VOLVER AL INICIO</a><br>
+{% endblock %}

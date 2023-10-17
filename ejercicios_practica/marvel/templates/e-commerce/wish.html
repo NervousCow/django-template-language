@@ -1,0 +1,34 @@
+{% extends "e-commerce/base_tp.html" %}
+
+{% block title %}Lista de deseosss{% endblock %}
+
+{% block contenido %}
+
+<table>
+
+  {% for comic in favoritos %}
+  <tr class="comic-item">
+      <td>
+          <a href="/e-commerce/detail?marvel_id={{comic.marvel_id}}">
+              <img class="comic_img" src="{{comic.picture}}" alt="\°/">
+          </a>
+      </td>
+      <td>
+          <ul>
+              <li>
+                  <h2>Titulo: {{comic.title}}</h2>
+              </li>
+              <li>
+                  <h2>Descripción: {{comic.description}}</h2>
+              </li>
+          </ul>
+      </td>
+  </tr>
+
+  {% endfor %}
+
+
+</table>
+
+<a href="{% url 'base' %}">VOLVER AL INICIO</a><br>
+{% endblock %}

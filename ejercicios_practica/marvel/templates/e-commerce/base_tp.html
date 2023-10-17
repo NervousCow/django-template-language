@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/e-commerce/css/base.css' %}">
+    <title>{% block title %}Marvel Comics TaReA{% endblock %}</title>
+</head>
+
+<body>
+    <div id="sidebar">
+        {% block sidebar %}
+        <br>
+        <img class="image" src="{% static 'e-commerce/img/marvel.svg' %}" alt="" height="20%" width="20%">
+        <div id="menu">
+
+            | <a href="{% url 'login-de-mi-app' %}">LOGIN</a>
+            | <a href="{% url 'tarea1' %}">Lista, Tabla y Texto</a>
+            | <a href="{% url 'tarea2' %}">Formulario y link en img</a>
+            | <a href="{% url 'base' %}">Base TP</a>
+            | <a href="{% url 'datos-de-usuario' %}">Usuario</a>
+            | <a href="{% url 'carrito' %}">Carrito</a>
+            | <a href="{% url 'favoritos' %}">Favoritos</a>
+            
+        </div>
+        {% endblock %}
+    </div>
+
+    <div id="content">
+        {% block contenido %}{% endblock %}
+    </div>
+    <footer>
+        <h3>Tomado de: <a
+                href="https://docs.djangoproject.com/en/3.2/ref/templates/language/#template-inheritance">Django
+                Template Language</a></h3>
+    </footer>
+</body>
+
+</html>
